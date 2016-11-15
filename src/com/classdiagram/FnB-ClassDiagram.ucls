@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.11" icons="true" automaticImage="PNG" always-add-relationships="false" 
+  generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true" 
+  router="FAN">  
+  <class id="1" language="java" name="com.models.ItemEater" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/models/ItemEater.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="112" width="97" x="371" y="102"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.DAO.CategoryDAO" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/DAO/CategoryDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="112" width="144" x="508" y="102"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.DAO.ItemDAO" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/DAO/ItemDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="112" width="144" x="692" y="102"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="com.services.AdminServices" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/services/AdminServices.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="58" width="110" x="876" y="102"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="com.DAO.OrderItemDAO" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/DAO/OrderItemDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="112" width="144" x="1026" y="102"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="com.services.JSONBuilder" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/services/JSONBuilder.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="58" width="96" x="1210" y="102"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="com.DAO.DBConnection" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/DAO/DBConnection.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="76" width="139" x="1346" y="102"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="com.models.Eater" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/models/Eater.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="166" width="159" x="1525" y="102"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="com.models.Size" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/models/Size.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="112" width="108" x="4998" y="774"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="com.models.Item" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/models/Item.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="202" width="113" x="4864" y="532"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <package id="11" language="java" name="com.models" project="Cinnabon-FnB" file="/Cinnabon-FnB/src/com/models" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="101" x="1724" y="102"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="12" language="java" name="com.models.Ingredient" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/models/Ingredient.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="94" width="134" x="4824" y="774"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <package id="13" language="java" name="com.DAO" project="Cinnabon-FnB" file="/Cinnabon-FnB/src/com/DAO" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="50" width="101" x="1865" y="102"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="14" language="java" name="com.services" project="Cinnabon-FnB" file="/Cinnabon-FnB/src/com/services" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="101" x="2006" y="102"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="15" language="java" name="com.DAO.ReservationDAO" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/DAO/ReservationDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="112" width="144" x="2147" y="102"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="com.models.BranchImage" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/models/BranchImage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="94" width="115" x="4125" y="532"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="com.models.OrderItem" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/models/OrderItem.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="94" width="97" x="4998" y="326"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="com.DAO.RestaurantDAO" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/DAO/RestaurantDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="112" width="144" x="2331" y="102"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="com.DAO.ItemEaterDAO" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/DAO/ItemEaterDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="112" width="144" x="2515" y="102"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="com.DAO.EaterDAO" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/DAO/EaterDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="112" width="144" x="2699" y="102"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="com.DAO.ReviewDAO" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/DAO/ReviewDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="112" width="144" x="2883" y="102"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="com.models.Branch" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/models/Branch.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="166" width="100" x="4125" y="326"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="com.DAO.AdminDAO" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/DAO/AdminDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="112" width="144" x="3067" y="102"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="com.models.Category" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/models/Category.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="112" width="130" x="4828" y="326"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="com.DAO.BranchDAO" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/DAO/BranchDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="112" width="144" x="3418" y="102"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="com.DAO.OrderDAO" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/DAO/OrderDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="112" width="144" x="3602" y="102"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="com.models.Review" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/models/Review.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="166" width="139" x="3786" y="102"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="com.models.Reservation" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/models/Reservation.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="148" width="127" x="3251" y="102"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="com.models.Restaurant" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/models/Restaurant.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="184" width="137" x="3965" y="102"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="com.models.Admin" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/models/Admin.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="148" width="120" x="4142" y="102"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="com.services.EaterServices" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/services/EaterServices.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="58" width="104" x="4302" y="102"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="com.models.Order" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/models/Order.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="130" width="140" x="4998" y="102"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="com.DAO.SizeDAO" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/DAO/SizeDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="112" width="144" x="4446" y="102"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="com.DAO.BranchImageDAO" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/DAO/BranchImageDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="112" width="144" x="4630" y="102"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="com.DAO.IngredientDAO" project="Cinnabon-FnB" 
+    file="/Cinnabon-FnB/src/com/DAO/IngredientDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="112" width="144" x="4814" y="102"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <association id="36">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="37" name="items"/>      
+      <multiplicity id="38" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="39">    
+    <bendpoint x="5007" y="532"/>    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="40" name="size"/>      
+      <multiplicity id="41" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="42">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="43" name="branch"/>      
+      <multiplicity id="44" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="45">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="46" name="sizes"/>      
+      <multiplicity id="47" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="48">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="49" name="items"/>      
+      <multiplicity id="50" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="51">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="52" name="images"/>      
+      <multiplicity id="53" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="54">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="55" name="branchID"/>      
+      <multiplicity id="56" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="57">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="58" name="ingredients"/>      
+      <multiplicity id="59" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="60">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="61" name="item"/>      
+      <multiplicity id="62" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="false" package="false" protected="false" private="false" static="false"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

@@ -9,12 +9,21 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.json.simple.JSONObject;
+
 import com.DAO.*;
 import com.models.*;
 
 @Path("/eater")
 @Produces(MediaType.TEXT_PLAIN)
 public class EaterServices {
+
+	@GET
+	@Path("/checkConnection")
+	public String checkConnection() {
+		Boolean state = DBConnection.getActiveConnection() == null;
+		return "{\"state\":\""+state+"\"}";
+	}
 
 	@GET
 	@Path("/")
