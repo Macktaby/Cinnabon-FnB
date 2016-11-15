@@ -27,6 +27,26 @@ public class JSONBuilder {
 		return json;
 	}
 
+	@SuppressWarnings("unchecked")
+	public static JSONObject convertEaterToJSON(Eater eater) {
+		JSONObject json = new JSONObject();
+		
+		if(eater == null)
+			json.put("state", "false");
+		else{
+			json.put("state", "true");
+			json.put("id", eater.getEaterID());
+			json.put("uname", eater.getUserName());
+			json.put("email", eater.getEmail());
+			json.put("pass", eater.getPassword());
+			json.put("phone", eater.getPhone());
+			json.put("dateReg", eater.getDateRegistered().toString());
+			json.put("state", "true");		
+		}
+		
+		return json;
+	}
+
 	// @SuppressWarnings("unchecked")
 	// public static JSONObject convertProjectsToJSON(ArrayList<Project>
 	// projects) {

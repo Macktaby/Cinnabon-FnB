@@ -1,6 +1,8 @@
 package com.models;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Eater {
 	private int eaterID;
@@ -8,7 +10,26 @@ public class Eater {
 	private String email;
 	private String password;
 	private String phone;
-	private Timestamp date_registered;
+	private Timestamp dateRegistered;
+
+	public Eater() {
+		this.eaterID = 0;
+		this.userName = "";
+		this.email = "";
+		this.password = "";
+		this.phone = "";
+		this.dateRegistered = new Timestamp(0);
+	}
+
+	public Eater(int eaterID, String userName, String email, String password, String phone) {
+		this.eaterID = eaterID;
+		this.userName = userName;
+		this.email = email;
+		this.password = password;
+		this.phone = phone;		
+		Date date = new Date();
+		this.dateRegistered = new Timestamp(date.getTime());
+	}
 
 	public Eater(int eaterID, String userName, String email, String password, String phone, Timestamp date_registered) {
 		this.eaterID = eaterID;
@@ -16,7 +37,7 @@ public class Eater {
 		this.email = email;
 		this.password = password;
 		this.phone = phone;
-		this.date_registered = date_registered;
+		this.dateRegistered = date_registered;
 	}
 
 	public int getEaterID() {
@@ -59,12 +80,12 @@ public class Eater {
 		this.phone = phone;
 	}
 
-	public Timestamp getDate_registered() {
-		return date_registered;
+	public Timestamp getDateRegistered() {
+		return dateRegistered;
 	}
 
-	public void setDate_registered(Timestamp date_registered) {
-		this.date_registered = date_registered;
+	public void setDateRegistered(Timestamp dateRegistered) {
+		this.dateRegistered = dateRegistered;
 	}
 
 }

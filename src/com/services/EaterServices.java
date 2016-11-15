@@ -18,11 +18,35 @@ import com.models.*;
 @Produces(MediaType.TEXT_PLAIN)
 public class EaterServices {
 
+	@POST
+	@Path("/signup")
+	public String signup(@FormParam("uname") String userName, @FormParam("pass") String password,
+			@FormParam("nickname") String nickName, @FormParam("email") String email,
+			@FormParam("phone") String phone) {
+
+		Eater eater = new Eater(0, userName, email, password, phone);
+
+		EaterDAO dao = new EaterDAO();
+		int id = dao.addEater(eater);
+
+		return JSONBuilder.convertIDToJSON(id).toJSONString();
+	}
+
+	@POST
+	@Path("/login")
+	public String login(@FormParam("email") String email, @FormParam("pass") String password) {
+
+		EaterDAO dao = new EaterDAO();
+		Eater eater = dao.getEater(email, password);
+
+		return JSONBuilder.convertEaterToJSON(eater).toJSONString();
+	}
+
 	@GET
 	@Path("/checkConnection")
 	public String checkConnection() {
-		Boolean state = DBConnection.getActiveConnection() == null;
-		return "{\"state\":\""+state+"\"}";
+		Boolean state = DBConnection.getActiveConnection() != null;
+		return "{\"state\":\"" + state + "\"}";
 	}
 
 	@GET
