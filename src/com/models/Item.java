@@ -1,10 +1,11 @@
 package com.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Item {
 
-	private String itemID;
+	private int itemID;
 	private String itemName;
 	private String description;
 	private double price;
@@ -15,7 +16,31 @@ public class Item {
 	private List<Ingredient> ingredients;
 	private List<Size> sizes;
 
-	public Item(String itemID, String itemName, String description, double price, int likes, int dislikes, int calories,
+	public Item() {
+		this.itemID = 0;
+		this.itemName = "";
+		this.description = "";
+		this.price = 0;
+		this.likes = 0;
+		this.dislikes = 0;
+		this.calories = 0;
+		this.nPersons = 0;
+		this.ingredients = new ArrayList<Ingredient>();
+		this.sizes = new ArrayList<Size>();
+	}
+
+	public Item(int itemID, String itemName, String description, int likes, int dislikes, int calories, int nPersons) {
+		this();
+		this.itemID = itemID;
+		this.itemName = itemName;
+		this.description = description;
+		this.likes = likes;
+		this.dislikes = dislikes;
+		this.calories = calories;
+		this.nPersons = nPersons;
+	}
+
+	public Item(int itemID, String itemName, String description, double price, int likes, int dislikes, int calories,
 			int nPersons, List<Ingredient> ingredients, List<Size> sizes) {
 		this.itemID = itemID;
 		this.itemName = itemName;
@@ -29,11 +54,11 @@ public class Item {
 		this.sizes = sizes;
 	}
 
-	public String getItemID() {
+	public int getItemID() {
 		return itemID;
 	}
 
-	public void setItemID(String itemID) {
+	public void setItemID(int itemID) {
 		this.itemID = itemID;
 	}
 

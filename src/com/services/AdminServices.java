@@ -1,5 +1,7 @@
 package com.services;
 
+import java.util.List;
+
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -154,6 +156,81 @@ public class AdminServices {
 		return JSONBuilder.convertStateToJSON(state).toJSONString();
 	}
 
+	@POST
+	@Path("/addItem")
+	public String addItem(@FormParam("name") String name, @FormParam("desc") String description,
+			@FormParam("calories") int calories, @FormParam("nPersons") int nPersons,
+			@FormParam("categoryID") int categoryID) {
+
+		Item item = new Item(0, name, description, 0, 0, calories, nPersons);
+
+		ItemDAO dao = new ItemDAO();
+		int id = dao.addItem(item, categoryID);
+
+		return JSONBuilder.convertIDToJSON(id).toJSONString();
+	}
+
+	@POST
+	@Path("/updateItem")
+	public String updateItem(@FormParam("id") int id, @FormParam("name") String name,
+			@FormParam("desc") String description, @FormParam("calories") int calories,
+			@FormParam("nPersons") int nPersons, @FormParam("categoryID") int categoryID) {
+
+		Item item = new Item(id, name, description, 0, 0, calories, nPersons);
+
+		ItemDAO dao = new ItemDAO();
+		String state = dao.updateItem(item, categoryID);
+
+		return JSONBuilder.convertStateToJSON(state).toJSONString();
+	}
+
+	@POST
+	@Path("/deleteItem")
+	public String deleteItem(@FormParam("id") int id) {
+
+		ItemDAO dao = new ItemDAO();
+		String state = dao.deleteItem(id);
+
+		return JSONBuilder.convertStateToJSON(state).toJSONString();
+	}
+
+	@POST
+	@Path("/addItemSize")
+	public String addItemSize(@FormParam("name") String name, @FormParam("desc") String description,
+			@FormParam("calories") int calories, @FormParam("nPersons") int nPersons,
+			@FormParam("categoryID") int categoryID) {
+
+		Item item = new Item(0, name, description, 0, 0, calories, nPersons);
+
+		SizeDAO dao = new SizeDAO();
+		int id = dao.addItem(item, categoryID);
+
+		return JSONBuilder.convertIDToJSON(id).toJSONString();
+	}
+
+	@POST
+	@Path("/updateItemSize")
+	public String updateItemSize(@FormParam("id") int id, @FormParam("name") String name,
+			@FormParam("desc") String description, @FormParam("calories") int calories,
+			@FormParam("nPersons") int nPersons, @FormParam("categoryID") int categoryID) {
+
+		Item item = new Item(id, name, description, 0, 0, calories, nPersons);
+
+		SizeDAO dao = new SizeDAO();
+		String state = dao.updateItemSize(item, categoryID);
+
+		return JSONBuilder.convertStateToJSON(state).toJSONString();
+	}
+
+	@POST
+	@Path("/deleteItemSize")
+	public String deleteItemSize(@FormParam("id") int id) {
+
+		SizeDAO dao = new SizeDAO();
+		String state = dao.deleteItemSize(id);
+
+		return JSONBuilder.convertStateToJSON(state).toJSONString();
+	}
 	@GET
 	@Path("/")
 	public String getJson() {
