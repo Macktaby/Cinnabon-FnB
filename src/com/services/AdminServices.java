@@ -51,6 +51,37 @@ public class AdminServices {
 		return JSONBuilder.convertStateToJSON(state).toJSONString();
 	}
 
+	@POST
+	@Path("/addBranchImage")
+	public String addBranchImage(@FormParam("branchID") int branchID, @FormParam("url") String url) {
+
+		BranchImageDAO dao = new BranchImageDAO();
+		int id = dao.addImage(branchID, url);
+
+		return JSONBuilder.convertIDToJSON(id).toJSONString();
+	}
+
+	@POST
+	@Path("/updateBranchImage")
+	public String updateBranchImage(@FormParam("id") int id, @FormParam("branchID") int branchID,
+			@FormParam("url") String url) {
+
+		BranchImageDAO dao = new BranchImageDAO();
+		String state = dao.updateImage(id, url, branchID);
+
+		return JSONBuilder.convertStateToJSON(state).toJSONString();
+	}
+
+	@POST
+	@Path("/deleteBranchImage")
+	public String deleteBranchImage(@FormParam("id") int id) {
+
+		BranchImageDAO dao = new BranchImageDAO();
+		String state = dao.deleteImage(id);
+
+		return JSONBuilder.convertStateToJSON(state).toJSONString();
+	}
+
 	@GET
 	@Path("/")
 	public String getJson() {
