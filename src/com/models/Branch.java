@@ -1,9 +1,10 @@
 package com.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Branch {
-	private int branch_id;
+	private int branchID;
 	private String phone;
 	private String location;
 	private String address;
@@ -11,9 +12,29 @@ public class Branch {
 	private String lat;
 	private List<BranchImage> images;
 
+	public Branch() {
+		this.branchID = 0;
+		this.phone = "";
+		this.location = "";
+		this.address = "";
+		this.lng = "";
+		this.lat = "";
+		this.images = new ArrayList<BranchImage>();
+	}
+
+	public Branch(int branch_id, String phone, String location, String address, String lng, String lat) {
+		this.branchID = branch_id;
+		this.phone = phone;
+		this.location = location;
+		this.address = address;
+		this.lng = lng;
+		this.lat = lat;
+		this.images = new ArrayList<BranchImage>();
+	}
+
 	public Branch(int branch_id, String phone, String location, String address, String lng, String lat,
 			List<BranchImage> images) {
-		this.branch_id = branch_id;
+		this.branchID = branch_id;
 		this.phone = phone;
 		this.location = location;
 		this.address = address;
@@ -22,12 +43,12 @@ public class Branch {
 		this.images = images;
 	}
 
-	public int getBranch_id() {
-		return branch_id;
+	public int getBranchID() {
+		return branchID;
 	}
 
-	public void setBranch_id(int branch_id) {
-		this.branch_id = branch_id;
+	public void setBranchID(int branch_id) {
+		this.branchID = branch_id;
 	}
 
 	public String getPhone() {
