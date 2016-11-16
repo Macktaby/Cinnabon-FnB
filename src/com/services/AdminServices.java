@@ -230,6 +230,41 @@ public class AdminServices {
 		return JSONBuilder.convertStateToJSON(state).toJSONString();
 	}
 
+	@POST
+	@Path("/addItemIngredient")
+	public String addItemIngredient(@FormParam("name") String ingredientName, @FormParam("itemID") int itemID) {
+
+		Ingredient ingredient = new Ingredient(0, ingredientName);
+
+		IngredientDAO dao = new IngredientDAO();
+		int id = dao.addItemIngredient(ingredient, itemID);
+
+		return JSONBuilder.convertIDToJSON(id).toJSONString();
+	}
+
+	@POST
+	@Path("/updateItemIngredient")
+	public String updateItemIngredient(@FormParam("id") int id, @FormParam("name") String ingredientName,
+			@FormParam("itemID") int itemID) {
+
+		Ingredient ingredient = new Ingredient(id, ingredientName);
+
+		IngredientDAO dao = new IngredientDAO();
+		String state = dao.updateItemIngredient(ingredient, itemID);
+
+		return JSONBuilder.convertStateToJSON(state).toJSONString();
+	}
+
+	@POST
+	@Path("/deleteItemIngredient")
+	public String deleteItemIngredient(@FormParam("id") int id) {
+
+		IngredientDAO dao = new IngredientDAO();
+		String state = dao.deleteItemIngredient(id);
+
+		return JSONBuilder.convertStateToJSON(state).toJSONString();
+	}
+
 	@GET
 	@Path("/")
 	public String getJson() {
