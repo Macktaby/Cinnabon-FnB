@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import com.mysql.jdbc.Statement;
 import com.models.*;
@@ -78,6 +77,45 @@ public class EaterDAO {
 		}
 
 		return null;
+	}
+
+	public String updateEater(Eater eater) {
+		try {
+			String sql = "UPDATE `eater` SET `user_name` = ?, `password` = ?, `phone` = ? WHERE `eater_id` = ?;";
+
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, eater.getUserName());
+			stmt.setString(2, eater.getPassword());
+			stmt.setString(3, eater.getPhone());
+			stmt.setInt(4, eater.getEaterID());
+
+			int rows = stmt.executeUpdate();
+			if (rows == 1)
+				return "true";
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return "false";
+	}
+
+	public String updatePassword(String password, int id) {
+		try {
+			String sql = "UPDATE `eater` SET `password` = ? WHERE `eater_id` = ?;";
+
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, password);
+			stmt.setInt(2, id);
+
+			int rows = stmt.executeUpdate();
+			if (rows == 1)
+				return "true";
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return "false";
 	}
 
 }
