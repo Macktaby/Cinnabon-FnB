@@ -6,6 +6,12 @@ public class Size {
 	private String sizeName;
 	private double sizePrice;
 
+	public Size() {
+		this.sizeID = 0;
+		this.sizeName = "";
+		this.sizePrice = 0.0;
+	}
+
 	public Size(int sizeID, String sizeName, double sizePrice) {
 		this.sizeID = sizeID;
 		this.sizeName = sizeName;

@@ -196,28 +196,26 @@ public class AdminServices {
 
 	@POST
 	@Path("/addItemSize")
-	public String addItemSize(@FormParam("name") String name, @FormParam("desc") String description,
-			@FormParam("calories") int calories, @FormParam("nPersons") int nPersons,
-			@FormParam("categoryID") int categoryID) {
+	public String addItemSize(@FormParam("name") String sizeName, @FormParam("price") double sizePrice,
+			@FormParam("itemID") int itemID) {
 
-		Item item = new Item(0, name, description, 0, 0, calories, nPersons);
+		Size size = new Size(0, sizeName, sizePrice);
 
 		SizeDAO dao = new SizeDAO();
-		int id = dao.addItem(item, categoryID);
+		int id = dao.addItemSize(size, itemID);
 
 		return JSONBuilder.convertIDToJSON(id).toJSONString();
 	}
 
 	@POST
 	@Path("/updateItemSize")
-	public String updateItemSize(@FormParam("id") int id, @FormParam("name") String name,
-			@FormParam("desc") String description, @FormParam("calories") int calories,
-			@FormParam("nPersons") int nPersons, @FormParam("categoryID") int categoryID) {
+	public String updateItemSize(@FormParam("id") int id, @FormParam("name") String sizeName,
+			@FormParam("price") double sizePrice, @FormParam("itemID") int itemID) {
 
-		Item item = new Item(id, name, description, 0, 0, calories, nPersons);
+		Size size = new Size(id, sizeName, sizePrice);
 
 		SizeDAO dao = new SizeDAO();
-		String state = dao.updateItemSize(item, categoryID);
+		String state = dao.updateItemSize(size, itemID);
 
 		return JSONBuilder.convertStateToJSON(state).toJSONString();
 	}
@@ -231,6 +229,7 @@ public class AdminServices {
 
 		return JSONBuilder.convertStateToJSON(state).toJSONString();
 	}
+
 	@GET
 	@Path("/")
 	public String getJson() {
