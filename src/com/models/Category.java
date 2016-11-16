@@ -1,5 +1,6 @@
 package com.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Category {
@@ -8,7 +9,22 @@ public class Category {
 	private List<Item> items;
 	private int branchID;
 
+	public Category() {
+		this.categoryID = 0;
+		this.categoryName = "";
+		this.items = new ArrayList<Item>();
+		this.branchID = 0;
+	}
+
+	public Category(int categoryID, String categoryName, int branchID) {
+		this();
+		this.categoryID = categoryID;
+		this.categoryName = categoryName;
+		this.branchID = branchID;
+	}
+
 	public Category(int categoryID, String categoryName, List<Item> items, int branchID) {
+		this();
 		this.categoryID = categoryID;
 		this.categoryName = categoryName;
 		this.items = items;

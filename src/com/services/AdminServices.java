@@ -119,6 +119,40 @@ public class AdminServices {
 		return JSONBuilder.convertStateToJSON(state).toJSONString();
 	}
 
+	@POST
+	@Path("/addCategory")
+	public String addCategory(@FormParam("name") String name, @FormParam("branchID") int branchID) {
+
+		Category cat = new Category(0, name, branchID);
+
+		CategoryDAO dao = new CategoryDAO();
+		int id = dao.addCategory(cat);
+
+		return JSONBuilder.convertIDToJSON(id).toJSONString();
+	}
+
+	@POST
+	@Path("/updateCategory")
+	public String updateCategory(@FormParam("id") int id, @FormParam("name") String name,
+			@FormParam("branchID") int branchID) {
+
+		Category cat = new Category(id, name, branchID);
+
+		CategoryDAO dao = new CategoryDAO();
+		String state = dao.updateCategory(cat);
+
+		return JSONBuilder.convertStateToJSON(state).toJSONString();
+	}
+
+	@POST
+	@Path("/deleteCategory")
+	public String deleteCategory(@FormParam("id") int id) {
+
+		CategoryDAO dao = new CategoryDAO();
+		String state = dao.deleteCategory(id);
+
+		return JSONBuilder.convertStateToJSON(state).toJSONString();
+	}
 
 	@GET
 	@Path("/")

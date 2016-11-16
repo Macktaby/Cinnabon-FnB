@@ -19,5 +19,65 @@ public class CategoryDAO {
 		conn = DBConnection.getActiveConnection();
 	}
 
+	public int addCategory(Category cat) {
+		try {
+			String sql = "INSERT INTO `category` (`category_name`, `branch_id`) VALUES (? , ?);";
+
+			stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			stmt.setString(1, cat.getCategoryName());
+			stmt.setInt(2, cat.getBranchID());
+
+			stmt.executeUpdate();
+
+			rs = stmt.getGeneratedKeys();
+			if (rs.next())
+				return rs.getInt(1);
+
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+
+		return 0;
+	}
+
+	public String updateCategory(Category cat) {
+		try {
+			String sql = "UPDATE `category` SET `category_name` = ?, `branch_id` = ? WHERE `category_id` = ?;";
+
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, cat.getCategoryName());
+			stmt.setInt(2, cat.getBranchID());
+			stmt.setInt(3, cat.getCategoryID());
+
+			int rows = stmt.executeUpdate();
+			if (rows == 1)
+				return "true";
+
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			return ex.getMessage();
+		}
+
+		return "false";
+	}
+
+	public String deleteCategory(int id) {
+		try {
+			String sql = "DELETE FROM `category` WHERE `category_id` = ?;";
+
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, id);
+
+			int rows = stmt.executeUpdate();
+			if (rows == 1)
+				return "true";
+
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			return ex.getMessage();
+		}
+
+		return "false";
+	}
 
 }
