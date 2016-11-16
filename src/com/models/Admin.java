@@ -2,14 +2,22 @@ package com.models;
 
 public class Admin {
 	private int adminID;
-	private String admin_name;
+	private String adminName;
 	private String email;
 	private String password;
 	private int branchID;
 
-	public Admin(int adminID, String admin_name, String email, String password, int branchID) {
+	public Admin() {
+		this.adminID = 0;
+		this.adminName = "";
+		this.email = "";
+		this.password = "";
+		this.branchID = 0;
+	}
+
+	public Admin(int adminID, String adminName, String email, String password, int branchID) {
 		this.adminID = adminID;
-		this.admin_name = admin_name;
+		this.adminName = adminName;
 		this.email = email;
 		this.password = password;
 		this.branchID = branchID;
@@ -23,12 +31,12 @@ public class Admin {
 		this.adminID = adminID;
 	}
 
-	public String getAdmin_name() {
-		return admin_name;
+	public String getAdminName() {
+		return adminName;
 	}
 
-	public void setAdmin_name(String admin_name) {
-		this.admin_name = admin_name;
+	public void setAdminName(String adminName) {
+		this.adminName = adminName;
 	}
 
 	public String getEmail() {

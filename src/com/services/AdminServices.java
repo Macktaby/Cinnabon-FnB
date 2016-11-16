@@ -82,6 +82,44 @@ public class AdminServices {
 		return JSONBuilder.convertStateToJSON(state).toJSONString();
 	}
 
+	@POST
+	@Path("/addAdmin")
+	public String addAdmin(@FormParam("name") String adminName, @FormParam("email") String email,
+			@FormParam("password") String password, @FormParam("branchID") int branchID) {
+
+		Admin admin = new Admin(0, adminName, email, password, branchID);
+
+		AdminDAO dao = new AdminDAO();
+		int id = dao.addAdmin(admin);
+
+		return JSONBuilder.convertIDToJSON(id).toJSONString();
+	}
+
+	@POST
+	@Path("/updateAdmin")
+	public String updateAdmin(@FormParam("id") int id, @FormParam("name") String adminName,
+			@FormParam("email") String email, @FormParam("password") String password,
+			@FormParam("branchID") int branchID) {
+
+		Admin admin = new Admin(id, adminName, email, password, branchID);
+
+		AdminDAO dao = new AdminDAO();
+		String state = dao.updateAdmin(admin);
+
+		return JSONBuilder.convertStateToJSON(state).toJSONString();
+	}
+
+	@POST
+	@Path("/deleteAdmin")
+	public String deleteAdmin(@FormParam("id") int id) {
+
+		AdminDAO dao = new AdminDAO();
+		String state = dao.deleteAdmin(id);
+
+		return JSONBuilder.convertStateToJSON(state).toJSONString();
+	}
+
+
 	@GET
 	@Path("/")
 	public String getJson() {
