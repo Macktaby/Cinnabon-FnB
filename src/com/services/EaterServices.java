@@ -1,5 +1,7 @@
 package com.services;
 
+import java.util.ArrayList;
+
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -68,6 +70,26 @@ public class EaterServices {
 		Eater eater = dao.getEaterByID(id);
 
 		return JSONBuilder.convertEaterToJSON(eater).toJSONString();
+	}
+
+	@POST
+	@Path("/getBranches")
+	public String getBranches() {
+
+		BranchDAO dao = new BranchDAO();
+		ArrayList<Branch> branches = dao.getBranches();
+
+		return JSONBuilder.convertBranchesToJSON(branches).toJSONString();
+	}
+
+	@POST
+	@Path("/getBranchByID")
+	public String getBranch(@FormParam("id") int id) {
+
+		BranchDAO dao = new BranchDAO();
+		Branch branch = dao.getBranchByID(id);
+
+		return JSONBuilder.convertBranchToJSON(branch).toJSONString();
 	}
 
 	/*********************************************************************************/

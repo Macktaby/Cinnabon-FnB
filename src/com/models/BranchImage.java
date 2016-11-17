@@ -2,11 +2,16 @@ package com.models;
 
 public class BranchImage {
 	private int imageID;
-	private String imageName;
+	private String url;
 
-	public BranchImage(int imageID, String imageName) {
+	public BranchImage() {
+		this.imageID = 0;
+		this.url = "";
+	}
+
+	public BranchImage(int imageID, String url) {
 		this.imageID = imageID;
-		this.imageName = imageName;
+		this.url = url;
 	}
 
 	public int getImageID() {
@@ -17,12 +22,12 @@ public class BranchImage {
 		this.imageID = imageID;
 	}
 
-	public String getImageName() {
-		return imageName;
+	public String getURL() {
+		return url;
 	}
 
-	public void setImageName(String imageName) {
-		this.imageName = imageName;
+	public void setURL(String url) {
+		this.url = url;
 	}
 
 }

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.mysql.jdbc.Statement;
 import com.models.*;
@@ -17,6 +18,15 @@ public class BranchImageDAO {
 
 	public BranchImageDAO() {
 		conn = DBConnection.getActiveConnection();
+	}
+
+	public BranchImage parseBranchImage(ResultSet rs) throws SQLException {
+		BranchImage image = new BranchImage();
+
+		image.setImageID(rs.getInt("branch_images.image_id"));
+		image.setURL(rs.getString("branch_images.url"));
+
+		return image;
 	}
 
 	public int addImage(int id, String url) {
@@ -78,6 +88,28 @@ public class BranchImageDAO {
 		}
 
 		return "false";
+	}
+
+	public List<BranchImage> getBranchImages(int branchID) {
+		try {
+			String sql = "SELECT * FROM branch_images WHERE branch_id = ?";
+
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, branchID);
+
+			rs = stmt.executeQuery();
+
+			ArrayList<BranchImage> images = new ArrayList<>();
+			while (rs.next())
+				images.add(parseBranchImage(rs));
+
+			return images;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+
 	}
 
 }

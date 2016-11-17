@@ -1,6 +1,7 @@
 package com.services;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -30,10 +31,10 @@ public class JSONBuilder {
 	@SuppressWarnings("unchecked")
 	public static JSONObject convertEaterToJSON(Eater eater) {
 		JSONObject json = new JSONObject();
-		
-		if(eater == null)
+
+		if (eater == null)
 			json.put("state", "false");
-		else{
+		else {
 			json.put("state", "true");
 			json.put("id", eater.getEaterID());
 			json.put("uname", eater.getUserName());
@@ -41,9 +42,70 @@ public class JSONBuilder {
 			json.put("pass", eater.getPassword());
 			json.put("phone", eater.getPhone());
 			json.put("dateReg", eater.getDateRegistered().toString());
-			json.put("state", "true");		
+			json.put("state", "true");
 		}
-		
+
+		return json;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static JSONObject convertBranchesToJSON(ArrayList<Branch> branches) {
+
+		JSONObject json = new JSONObject();
+
+		if (branches == null) {
+			json.put("state", "false");
+		} else {
+
+			JSONArray jsonArr = new JSONArray();
+			for (Branch branch : branches)
+				jsonArr.add(convertBranchToJSON(branch));
+
+			json.put("state", "true");
+			json.put("branches", jsonArr);
+		}
+
+		return json;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static JSONObject convertBranchToJSON(Branch branch) {
+
+		JSONObject json = new JSONObject();
+
+		if (branch == null)
+			json.put("state", "false");
+		else {
+			json.put("state", "true");
+			json.put("id", branch.getBranchID());
+			json.put("phone", branch.getPhone());
+			json.put("location", branch.getLocation());
+			json.put("address", branch.getAddress());
+			json.put("lng", branch.getLng());
+			json.put("lat", branch.getLat());
+			json.put("images", convertImagesToJSON(branch.getImages()));
+		}
+
+		return json;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static JSONArray convertImagesToJSON(List<BranchImage> images) {
+		JSONArray jsonArr = new JSONArray();
+
+		for (BranchImage image : images)
+			jsonArr.add(convertImageToJSON(image));
+
+		return jsonArr;
+	}
+
+	@SuppressWarnings("unchecked")
+	private static Object convertImageToJSON(BranchImage image) {
+		JSONObject json = new JSONObject();
+
+		json.put("id", image.getImageID());
+		json.put("url", image.getURL());
+
 		return json;
 	}
 

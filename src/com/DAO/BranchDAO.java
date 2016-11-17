@@ -19,6 +19,34 @@ public class BranchDAO {
 		conn = DBConnection.getActiveConnection();
 	}
 
+	public Branch parseBranch() throws SQLException {
+		Branch branch = new Branch();
+
+		branch.setBranchID(rs.getInt("branch_id"));
+		branch.setPhone(rs.getString("phone"));
+		branch.setLocation(rs.getString("location"));
+		branch.setAddress(rs.getString("address"));
+		branch.setLng(rs.getString("lng"));
+		branch.setLat(rs.getString("lat"));
+
+		return branch;
+	}
+
+	private Branch parseBranchAndImages() throws SQLException {
+		Branch branch = new Branch();
+
+		branch.setBranchID(rs.getInt("branch.branch_id"));
+		branch.setPhone(rs.getString("branch.phone"));
+		branch.setLocation(rs.getString("branch.location"));
+		branch.setAddress(rs.getString("branch.address"));
+		branch.setLng(rs.getString("branch.lng"));
+		branch.setLat(rs.getString("branch.lat"));
+
+		branch.setImages(new BranchImageDAO().getBranchImages(branch.getBranchID()));
+
+		return branch;
+	}
+
 	public int addBranch(Branch branch) {
 		try {
 			String sql = "INSERT INTO `branch` (`phone`, `location`, `address`, `lng`, `lat`) "
@@ -86,6 +114,42 @@ public class BranchDAO {
 		}
 
 		return "false";
+	}
+
+	public ArrayList<Branch> getBranches() {
+		try {
+			String sql = "SELECT * FROM branch";
+
+			stmt = conn.prepareStatement(sql);
+			rs = stmt.executeQuery();
+
+			ArrayList<Branch> branches = new ArrayList<>();
+			while (rs.next())
+				branches.add(parseBranch());
+			return branches;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public Branch getBranchByID(int id) {
+		try {
+			String sql = "SELECT * FROM branch WHERE branch_id=?";
+
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, id);
+
+			rs = stmt.executeQuery();
+
+			while (rs.next())
+				return (parseBranchAndImages());
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
