@@ -7,11 +7,21 @@ public class Restaurant {
 	private String description;
 	private String type;
 	private String logo;
-	private int hotline;
+	private String hotline;
 	private double rating;
 
+	public Restaurant() {
+		this.restaurantID = 0;
+		this.restaurantName = "";
+		this.description = "";
+		this.type = "";
+		this.logo = "";
+		this.hotline = "";
+		this.rating = 0.0;
+	}
+
 	public Restaurant(int restaurantID, String restaurantName, String description, String type, String logo,
-			int hotline, double rating) {
+			String hotline, double rating) {
 		this.restaurantID = restaurantID;
 		this.restaurantName = restaurantName;
 		this.description = description;
@@ -61,11 +71,11 @@ public class Restaurant {
 		this.logo = logo;
 	}
 
-	public int getHotline() {
+	public String getHotline() {
 		return hotline;
 	}
 
-	public void setHotline(int hotline) {
+	public void setHotline(String hotline) {
 		this.hotline = hotline;
 	}
 

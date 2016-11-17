@@ -1,7 +1,5 @@
 package com.services;
 
-import java.util.List;
-
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -261,6 +259,19 @@ public class AdminServices {
 
 		IngredientDAO dao = new IngredientDAO();
 		String state = dao.deleteItemIngredient(id);
+
+		return JSONBuilder.convertStateToJSON(state).toJSONString();
+	}
+
+	@POST
+	@Path("/updateRestaurantInfo")
+	public String updateRestaurantInfo(@FormParam("name") String name, @FormParam("desc") String description,
+			@FormParam("type") String type, @FormParam("logo") String logo, @FormParam("hotline") String hotline) {
+
+		Restaurant rest = new Restaurant(0, name, description, type, logo, hotline, 0);
+
+		RestaurantDAO dao = new RestaurantDAO();
+		String state = dao.updateRestaurantInfo(rest);
 
 		return JSONBuilder.convertStateToJSON(state).toJSONString();
 	}

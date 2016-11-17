@@ -91,6 +91,17 @@ public class EaterServices {
 
 		return JSONBuilder.convertBranchToJSON(branch).toJSONString();
 	}
+	
+	@POST
+	@Path("/getRestaurantInfo")
+	public String getRestaurantInfo() {
+
+		RestaurantDAO dao = new RestaurantDAO();
+		Restaurant restaurant = dao.getRestaurantInfo();
+
+		return JSONBuilder.convertRestaurantToJSON(restaurant).toJSONString();
+	}
+
 
 	/*********************************************************************************/
 

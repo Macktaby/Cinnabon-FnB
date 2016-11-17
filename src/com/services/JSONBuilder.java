@@ -109,6 +109,26 @@ public class JSONBuilder {
 		return json;
 	}
 
+	@SuppressWarnings("unchecked")
+	public static JSONObject convertRestaurantToJSON(Restaurant rest) {
+		JSONObject json = new JSONObject();
+
+		if (rest == null)
+			json.put("state", "false");
+		else {
+			json.put("state", "true");
+			json.put("id", rest.getRestaurantID());
+			json.put("name", rest.getRestaurantName());
+			json.put("desc", rest.getDescription());
+			json.put("type", rest.getType());
+			json.put("logo", rest.getLogo());
+			json.put("hotline", rest.getHotline());
+			json.put("rating", rest.getRating());
+		}
+
+		return json;
+	}
+
 	// @SuppressWarnings("unchecked")
 	// public static JSONObject convertProjectsToJSON(ArrayList<Project>
 	// projects) {
