@@ -102,6 +102,17 @@ public class EaterServices {
 		return JSONBuilder.convertRestaurantToJSON(restaurant).toJSONString();
 	}
 
+	@POST
+	@Path("/getMenu")
+	public String getMenu() {
+
+		CategoryDAO dao = new CategoryDAO();
+		ArrayList<Category> categories= dao.getMenu();
+
+		return JSONBuilder.convertCategoriesToJSON(categories).toJSONString();
+	}
+
+
 
 	/*********************************************************************************/
 

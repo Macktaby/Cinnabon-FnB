@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.mysql.jdbc.Statement;
 import com.models.*;
@@ -17,6 +18,16 @@ public class SizeDAO {
 
 	public SizeDAO() {
 		conn = DBConnection.getActiveConnection();
+	}
+
+	public Size parseSize() throws SQLException {
+		Size size = new Size();
+
+		size.setSizeID(rs.getInt("size_id"));
+		size.setSizeName(rs.getString("size_name"));
+		size.setSizePrice(rs.getDouble("price"));
+
+		return size;
 	}
 
 	public int addItemSize(Size size, int itemID) {
@@ -80,6 +91,27 @@ public class SizeDAO {
 		}
 
 		return "false";
+	}
+
+	public List<Size> getItemSizes(int itemID) {
+		try {
+			String sql = "SELECT * FROM size WHERE item_id = ?";
+
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, itemID);
+
+			rs = stmt.executeQuery();
+
+			ArrayList<Size> sizes = new ArrayList<>();
+
+			while (rs.next())
+				sizes.add(parseSize());
+
+			return sizes;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

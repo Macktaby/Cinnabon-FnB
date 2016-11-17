@@ -129,6 +129,153 @@ public class JSONBuilder {
 		return json;
 	}
 
+	@SuppressWarnings("unchecked")
+	public static JSONObject convertCategoriesToJSON(ArrayList<Category> categories) {
+		JSONObject json = new JSONObject();
+
+		if (categories == null)
+			json.put("state", "false");
+		else {
+			JSONArray jsonArr = new JSONArray();
+			for (Category cat : categories)
+				jsonArr.add(convertCategoryToJSON(cat));
+
+			json.put("state", "true");
+			json.put("categories", jsonArr);
+
+			return json;
+		}
+
+		return json;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static JSONObject convertCategoryToJSON(Category cat) {
+		JSONObject json = new JSONObject();
+
+		if (cat == null)
+			json.put("state", "false");
+		else {
+			json.put("state", "true");
+			json.put("id", cat.getCategoryID());
+			json.put("name", cat.getCategoryName());
+			json.put("items", convertItemsToJSON(cat.getItems()).get("items"));
+		}
+
+		return json;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static JSONObject convertItemsToJSON(List<Item> items) {
+		JSONObject json = new JSONObject();
+
+		if (items == null)
+			json.put("state", "false");
+		else {
+			JSONArray jsonArr = new JSONArray();
+			for (Item item : items)
+				jsonArr.add(convertItemToJSON(item));
+
+			json.put("state", "true");
+			json.put("items", jsonArr);
+
+			return json;
+		}
+
+		return json;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static Object convertItemToJSON(Item item) {
+		JSONObject json = new JSONObject();
+
+		if (item == null)
+			json.put("state", "false");
+		else {
+			json.put("state", "true");
+			json.put("id", item.getItemID());
+			json.put("name", item.getItemName());
+			json.put("desc", item.getDescription());
+			json.put("likes", item.getLikes());
+			json.put("dislikes", item.getDislikes());
+			json.put("calories", item.getCalories());
+			json.put("nPersons", item.getnPersons());
+			json.put("ingredients", convertIngredientsToJSON(item.getIngredients()).get("ingredients"));
+			json.put("sizes", convertSizesToJSON(item.getSizes()).get("sizes"));
+		}
+
+		return json;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static JSONObject convertSizesToJSON(List<Size> sizes) {
+		JSONObject json = new JSONObject();
+
+		if (sizes == null) {
+			json.put("state", "false");
+		} else {
+
+			JSONArray jsonArr = new JSONArray();
+			for (Size size : sizes)
+				jsonArr.add(convertSizeToJSON(size));
+
+			json.put("state", "true");
+			json.put("sizes", jsonArr);
+		}
+
+		return json;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static JSONObject convertSizeToJSON(Size size) {
+		JSONObject json = new JSONObject();
+
+		if (size == null)
+			json.put("state", "false");
+		else {
+			json.put("state", "true");
+			json.put("id", size.getSizeID());
+			json.put("name", size.getSizeName());
+			json.put("price", size.getSizePrice());
+		}
+
+		return json;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static JSONObject convertIngredientsToJSON(List<Ingredient> ingredients) {
+		JSONObject json = new JSONObject();
+
+		if (ingredients == null) {
+			json.put("state", "false");
+		} else {
+
+			JSONArray jsonArr = new JSONArray();
+			for (Ingredient ingredient : ingredients)
+				jsonArr.add(convertIngredientToJSON(ingredient));
+
+			json.put("state", "true");
+			json.put("ingredients", jsonArr);
+		}
+
+		return json;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static JSONObject convertIngredientToJSON(Ingredient ingredient) {
+		JSONObject json = new JSONObject();
+
+		if (ingredient == null)
+			json.put("state", "false");
+		else {
+			json.put("state", "true");
+			json.put("id", ingredient.getIngredientID());
+			json.put("name", ingredient.getIngredientName());
+		}
+
+		return json;
+	}
+
 	// @SuppressWarnings("unchecked")
 	// public static JSONObject convertProjectsToJSON(ArrayList<Project>
 	// projects) {

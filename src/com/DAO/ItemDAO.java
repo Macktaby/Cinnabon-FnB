@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.mysql.jdbc.Statement;
 import com.models.*;
@@ -17,6 +18,22 @@ public class ItemDAO {
 
 	public ItemDAO() {
 		conn = DBConnection.getActiveConnection();
+	}
+
+	public Item parseItem() throws SQLException {
+		Item item = new Item();
+
+		item.setItemID(rs.getInt("item_id"));
+		item.setItemName(rs.getString("item_name"));
+		item.setDescription(rs.getString("item_desc"));
+		item.setLikes(rs.getInt("likes"));
+		item.setDislikes(rs.getInt("dislikes"));
+		item.setCalories(rs.getInt("calories"));
+		item.setnPersons(rs.getInt("nPersons"));
+		item.setIngredients(new IngredientDAO().getItemIngredients(item.getItemID()));
+		item.setSizes(new SizeDAO().getItemSizes(item.getItemID()));
+
+		return item;
 	}
 
 	public int addItem(Item item, int categoryID) {
@@ -89,6 +106,27 @@ public class ItemDAO {
 		}
 
 		return "false";
+	}
+
+	public List<Item> getItems(int categoryID) {
+		try {
+			String sql = "SELECT * FROM item WHERE category_id = ?";
+
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, categoryID);
+
+			rs = stmt.executeQuery();
+
+			ArrayList<Item> items = new ArrayList<>();
+
+			while (rs.next())
+				items.add(parseItem());
+
+			return items;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

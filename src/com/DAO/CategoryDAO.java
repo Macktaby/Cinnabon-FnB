@@ -19,6 +19,16 @@ public class CategoryDAO {
 		conn = DBConnection.getActiveConnection();
 	}
 
+	public Category parseCategory() throws SQLException {
+		Category cat = new Category();
+
+		cat.setCategoryID(rs.getInt("category_id"));
+		cat.setCategoryName(rs.getString("category_name"));
+		cat.setItems(new ItemDAO().getItems(cat.getCategoryID()));
+
+		return cat;
+	}
+
 	public int addCategory(Category cat) {
 		try {
 			String sql = "INSERT INTO `category` (`category_name`, `branch_id`) VALUES (? , ?);";
@@ -80,4 +90,22 @@ public class CategoryDAO {
 		return "false";
 	}
 
+	public ArrayList<Category> getMenu() {
+		try {
+			String sql = "SELECT * FROM category";
+
+			stmt = conn.prepareStatement(sql);
+			rs = stmt.executeQuery();
+
+			ArrayList<Category> categories = new ArrayList<>();
+
+			while (rs.next())
+				categories.add(parseCategory());
+
+			return categories;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.mysql.jdbc.Statement;
 import com.models.*;
@@ -17,6 +18,15 @@ public class IngredientDAO {
 
 	public IngredientDAO() {
 		conn = DBConnection.getActiveConnection();
+	}
+
+	public Ingredient parseIngredient() throws SQLException {
+		Ingredient ingredient = new Ingredient();
+
+		ingredient.setIngredientID(rs.getInt("ingredient_id"));
+		ingredient.setIngredientName(rs.getString("ingredient_name"));
+
+		return ingredient;
 	}
 
 	public int addItemIngredient(Ingredient ingredient, int itemID) {
@@ -78,6 +88,27 @@ public class IngredientDAO {
 		}
 
 		return "false";
+	}
+
+	public List<Ingredient> getItemIngredients(int itemID) {
+		try {
+			String sql = "SELECT * FROM ingredients WHERE item_id = ?";
+
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, itemID);
+
+			rs = stmt.executeQuery();
+
+			ArrayList<Ingredient> ingredients = new ArrayList<>();
+
+			while (rs.next())
+				ingredients.add(parseIngredient());
+
+			return ingredients;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
