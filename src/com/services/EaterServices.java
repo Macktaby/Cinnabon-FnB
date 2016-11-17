@@ -1,7 +1,5 @@
 package com.services;
 
-import java.util.ArrayList;
-
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -60,6 +58,16 @@ public class EaterServices {
 		String state = dao.updatePassword(password, id);
 
 		return JSONBuilder.convertStateToJSON(state).toJSONString();
+	}
+
+	@POST
+	@Path("/getEaterByID")
+	public String getEaterByID(@FormParam("id") int id) {
+
+		EaterDAO dao = new EaterDAO();
+		Eater eater = dao.getEaterByID(id);
+
+		return JSONBuilder.convertEaterToJSON(eater).toJSONString();
 	}
 
 	/*********************************************************************************/

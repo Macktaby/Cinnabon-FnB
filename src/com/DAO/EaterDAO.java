@@ -118,4 +118,22 @@ public class EaterDAO {
 		return "false";
 	}
 
+	public Eater getEaterByID(int id) {
+		try {
+			String sql = "SELECT * FROM eater WHERE eater_id = ?";
+
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, id);
+
+			rs = stmt.executeQuery();
+
+			if (rs.next())
+				return parseEater();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
 }
