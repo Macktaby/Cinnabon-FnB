@@ -171,6 +171,42 @@ public class EaterServices {
 		return JSONBuilder.convertReservationsToJSON(reservations).toJSONString();
 	}
 
+	@POST
+	@Path("/addReview")
+	public String addReview(@FormParam("body") String body, @FormParam("rating") int rating,
+			@FormParam("eaterID") int eaterID) {
+
+		Review review = new Review(0, eaterID, body, rating);
+
+		ReviewDAO dao = new ReviewDAO();
+		int id = dao.addReview(review);
+
+		return JSONBuilder.convertIDToJSON(id).toJSONString();
+	}
+
+	@POST
+	@Path("/updateReview")
+	public String updateReview(@FormParam("id") int id, @FormParam("body") String body, @FormParam("rating") int rating,
+			@FormParam("eaterID") int eaterID) {
+
+		Review review = new Review(id, eaterID, body, rating);
+
+		ReviewDAO dao = new ReviewDAO();
+		String state = dao.updateReview(review);
+
+		return JSONBuilder.convertStateToJSON(state).toJSONString();
+	}
+
+	@POST
+	@Path("/deleteReview")
+	public String deleteReview(@FormParam("id") int id) {
+
+		ReviewDAO dao = new ReviewDAO();
+		String state = dao.deleteReview(id);
+
+		return JSONBuilder.convertStateToJSON(state).toJSONString();
+	}
+
 	/*********************************************************************************/
 
 	@GET
