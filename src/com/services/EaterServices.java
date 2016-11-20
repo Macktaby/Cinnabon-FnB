@@ -206,6 +206,17 @@ public class EaterServices {
 
 		return JSONBuilder.convertStateToJSON(state).toJSONString();
 	}
+	
+	@POST
+	@Path("/getReviews")
+	public String getReviews() {
+
+		ReviewDAO dao = new ReviewDAO();
+		ArrayList<Review> reviews = dao.getReviews();
+
+		return JSONBuilder.convertReviewsToJSON(reviews).toJSONString();
+	}
+
 
 	/*********************************************************************************/
 

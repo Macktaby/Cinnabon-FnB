@@ -296,7 +296,7 @@ public class JSONBuilder {
 	}
 
 	@SuppressWarnings("unchecked")
-	private static JSONObject convertReservationToJSON(Reservation reservation) {
+	public static JSONObject convertReservationToJSON(Reservation reservation) {
 		JSONObject json = new JSONObject();
 
 		if (reservation == null) {
@@ -314,43 +314,42 @@ public class JSONBuilder {
 		return json;
 	}
 
-	// @SuppressWarnings("unchecked")
-	// public static JSONObject convertProjectsToJSON(ArrayList<Project>
-	// projects) {
-	// JSONObject json = new JSONObject();
-	//
-	// if (projects == null) {
-	// json.put("state", "false");
-	// } else {
-	//
-	// JSONArray jsonArr = new JSONArray();
-	// for (Project project : projects)
-	// jsonArr.add(convertProjectToJSON(project));
-	//
-	// json.put("state", "true");
-	// json.put("projects", jsonArr);
-	// }
-	//
-	// return json;
-	// }
-	//
-	// @SuppressWarnings("unchecked")
-	// public static JSONObject convertProjectToJSON(Project project) {
-	// JSONObject json = new JSONObject();
-	//
-	// if (project == null)
-	// json.put("state", "false");
-	// else {
-	// json.put("state", "true");
-	// json.put("id", project.getProjectID());
-	// json.put("name", project.getName());
-	// json.put("tech_ref", project.getTechReflection());
-	// json.put("mng_ref", project.getMngReflection());
-	// json.put("bz_ref", project.getBzReflection());
-	// json.put("parent_id", project.getParentID());
-	// }
-	//
-	// return json;
-	// }
+	@SuppressWarnings("unchecked")
+	public static JSONObject convertReviewsToJSON(ArrayList<Review> reviews) {
+		JSONObject json = new JSONObject();
+
+		if (reviews == null) {
+			json.put("state", "false");
+		} else {
+
+			JSONArray jsonArr = new JSONArray();
+			for (Review review : reviews)
+				jsonArr.add(convertReviewToJSON(review));
+
+			json.put("state", "true");
+			json.put("reviews", jsonArr);
+		}
+
+		return json;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static JSONObject convertReviewToJSON(Review review) {
+		JSONObject json = new JSONObject();
+
+		if (review == null)
+			json.put("state", "false");
+		else {
+			json.put("state", "true");
+			json.put("id", review.getReviewID());
+			json.put("eaterID", review.getEaterID());
+			json.put("userName", review.getUserName());
+			json.put("body", review.getReviewBody());
+			json.put("rating", review.getRating());
+			json.put("reviewDate", review.getReviewDate().toString());
+		}
+
+		return json;
+	}
 
 }

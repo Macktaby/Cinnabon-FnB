@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.mysql.jdbc.Statement;
 import com.models.*;
@@ -16,6 +17,20 @@ public class ReviewDAO {
 
 	public ReviewDAO() {
 		conn = DBConnection.getActiveConnection();
+	}
+
+	private Review parseReview() throws SQLException {
+
+		Review review = new Review();
+
+		review.setReviewID(rs.getInt("review.review_id"));
+		review.setEaterID(rs.getInt("review.eater_id"));
+		review.setUserName(rs.getString("eater.user_name"));
+		review.setReviewBody(rs.getString("review.body"));
+		review.setRating(rs.getInt("review.rating"));
+		review.setReviewDate(rs.getTimestamp("review.review_date"));
+
+		return review;
 	}
 
 	public int addReview(Review review) {
@@ -85,6 +100,26 @@ public class ReviewDAO {
 		}
 
 		return "false";
+	}
+
+	public ArrayList<Review> getReviews() {
+		try {
+			String sql = "SELECT * FROM review, eater WHERE eater.eater_id = review.eater_id";
+
+			stmt = conn.prepareStatement(sql);
+			rs = stmt.executeQuery();
+
+			ArrayList<Review> reviews = new ArrayList<>();
+
+			while (rs.next())
+				reviews.add(parseReview());
+
+			return reviews;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return null;
 	}
 
 }
