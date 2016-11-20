@@ -1,5 +1,6 @@
 package com.services;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import javax.ws.rs.FormParam;
@@ -81,15 +82,17 @@ public class EaterServices {
 
 		return JSONBuilder.convertBranchesToJSON(branches).toJSONString();
 	}
+
 	@POST
 	@Path("/filterBranchesByLocation")
-	public String filterBranchesByLocation(@FormParam("location")String location) {
+	public String filterBranchesByLocation(@FormParam("location") String location) {
 
 		BranchDAO dao = new BranchDAO();
 		ArrayList<Branch> branches = dao.filterBranchesByLocation(location);
 
 		return JSONBuilder.convertBranchesToJSON(branches).toJSONString();
 	}
+
 	@POST
 	@Path("/getBranchByID")
 	public String getBranch(@FormParam("id") int id) {
@@ -99,7 +102,7 @@ public class EaterServices {
 
 		return JSONBuilder.convertBranchToJSON(branch).toJSONString();
 	}
-	
+
 	@POST
 	@Path("/getRestaurantInfo")
 	public String getRestaurantInfo() {
@@ -115,12 +118,48 @@ public class EaterServices {
 	public String getMenu() {
 
 		CategoryDAO dao = new CategoryDAO();
-		ArrayList<Category> categories= dao.getMenu();
+		ArrayList<Category> categories = dao.getMenu();
 
 		return JSONBuilder.convertCategoriesToJSON(categories).toJSONString();
 	}
 
+	@POST
+	@Path("/addReservation")
+	public String addReservation(@FormParam("eaterID") int eaterID, @FormParam("branchID") int branchID,
+			@FormParam("nPersons") int nPersons, @FormParam("startTime") Timestamp startTime,
+			@FormParam("endTime") Timestamp endTime) {
 
+		Reservation res = new Reservation(0, eaterID, nPersons, startTime, endTime);
+
+		ReservationDAO dao = new ReservationDAO();
+		int id = dao.addReservation(res, branchID);
+
+		return JSONBuilder.convertIDToJSON(id).toJSONString();
+	}
+
+	@POST
+	@Path("/updateReservation")
+	public String updateReservation(@FormParam("id") int id, @FormParam("eaterID") int eaterID,
+			@FormParam("branchID") int branchID, @FormParam("nPersons") int nPersons,
+			@FormParam("startTime") Timestamp startTime, @FormParam("endTime") Timestamp endTime) {
+
+		Reservation res = new Reservation(id, eaterID, nPersons, startTime, endTime);
+
+		ReservationDAO dao = new ReservationDAO();
+		String state = dao.updateReservation(res, branchID);
+
+		return JSONBuilder.convertStateToJSON(state).toJSONString();
+	}
+
+	@POST
+	@Path("/deleteReservation")
+	public String deleteReservation(@FormParam("id") int id) {
+
+		ReservationDAO dao = new ReservationDAO();
+		String state = dao.deleteReservation(id);
+
+		return JSONBuilder.convertStateToJSON(state).toJSONString();
+	}
 
 	/*********************************************************************************/
 

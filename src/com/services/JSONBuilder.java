@@ -100,7 +100,7 @@ public class JSONBuilder {
 	}
 
 	@SuppressWarnings("unchecked")
-	private static Object convertImageToJSON(BranchImage image) {
+	public static JSONObject convertImageToJSON(BranchImage image) {
 		JSONObject json = new JSONObject();
 
 		json.put("id", image.getImageID());
@@ -186,7 +186,7 @@ public class JSONBuilder {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static Object convertItemToJSON(Item item) {
+	public static JSONObject convertItemToJSON(Item item) {
 		JSONObject json = new JSONObject();
 
 		if (item == null)

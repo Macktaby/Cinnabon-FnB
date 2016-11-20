@@ -5,16 +5,34 @@ import java.sql.Timestamp;
 public class Reservation {
 	private int reservationID;
 	private int eaterID;
-	private Branch branchID;
+	private Branch branch;
 	private int nPersons;
 	private Timestamp startTime;
 	private Timestamp endTime;
 
-	public Reservation(int reservationID, int eaterID, Branch branchID, int nPersons, Timestamp startTime,
+	public Reservation() {
+		this.reservationID = 0;
+		this.eaterID = 0;
+		this.branch = new Branch();
+		this.nPersons = 0;
+		this.startTime = new Timestamp(0);
+		this.endTime = new Timestamp(0);
+	}
+
+	public Reservation(int reservationID, int eaterID, int nPersons, Timestamp startTime, Timestamp endTime) {
+		this.reservationID = reservationID;
+		this.eaterID = eaterID;
+		this.branch = new Branch();
+		this.nPersons = nPersons;
+		this.startTime = startTime;
+		this.endTime = endTime;
+	}
+
+	public Reservation(int reservationID, int eaterID, Branch branch, int nPersons, Timestamp startTime,
 			Timestamp endTime) {
 		this.reservationID = reservationID;
 		this.eaterID = eaterID;
-		this.branchID = branchID;
+		this.branch = branch;
 		this.nPersons = nPersons;
 		this.startTime = startTime;
 		this.endTime = endTime;
@@ -36,12 +54,12 @@ public class Reservation {
 		this.eaterID = eaterID;
 	}
 
-	public Branch getBranchID() {
-		return branchID;
+	public Branch getBranch() {
+		return branch;
 	}
 
-	public void setBranchID(Branch branchID) {
-		this.branchID = branchID;
+	public void setBranchID(Branch branch) {
+		this.branch = branch;
 	}
 
 	public int getnPersons() {
