@@ -58,7 +58,7 @@ public class Reservation {
 		return branch;
 	}
 
-	public void setBranchID(Branch branch) {
+	public void setBranch(Branch branch) {
 		this.branch = branch;
 	}
 

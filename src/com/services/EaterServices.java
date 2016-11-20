@@ -161,6 +161,16 @@ public class EaterServices {
 		return JSONBuilder.convertStateToJSON(state).toJSONString();
 	}
 
+	@POST
+	@Path("/getReservations")
+	public String getReservations(@FormParam("eaterID") int eaterID) {
+
+		ReservationDAO dao = new ReservationDAO();
+		ArrayList<Reservation> reservations = dao.getReservations(eaterID);
+
+		return JSONBuilder.convertReservationsToJSON(reservations).toJSONString();
+	}
+
 	/*********************************************************************************/
 
 	@GET

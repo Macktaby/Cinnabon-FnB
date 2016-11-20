@@ -276,6 +276,44 @@ public class JSONBuilder {
 		return json;
 	}
 
+	@SuppressWarnings("unchecked")
+	public static JSONObject convertReservationsToJSON(ArrayList<Reservation> reservations) {
+		JSONObject json = new JSONObject();
+
+		if (reservations == null) {
+			json.put("state", "false");
+		} else {
+			JSONArray jsonArr = new JSONArray();
+
+			for (Reservation reservation : reservations)
+				jsonArr.add(convertReservationToJSON(reservation));
+
+			json.put("state", "true");
+			json.put("reservations", jsonArr);
+		}
+
+		return json;
+	}
+
+	@SuppressWarnings("unchecked")
+	private static JSONObject convertReservationToJSON(Reservation reservation) {
+		JSONObject json = new JSONObject();
+
+		if (reservation == null) {
+			json.put("state", "false");
+		} else {
+			json.put("state", "true");
+			json.put("id", reservation.getReservationID());
+			json.put("eaterID", reservation.getEaterID());
+			json.put("branch", convertBranchToJSON(reservation.getBranch()));
+			json.put("nPersons", reservation.getnPersons());
+			json.put("start", reservation.getStartTime().toString());
+			json.put("end", reservation.getEndTime().toString());
+		}
+
+		return json;
+	}
+
 	// @SuppressWarnings("unchecked")
 	// public static JSONObject convertProjectsToJSON(ArrayList<Project>
 	// projects) {

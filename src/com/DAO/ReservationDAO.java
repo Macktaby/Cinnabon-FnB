@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.mysql.jdbc.Statement;
 import com.models.*;
@@ -16,6 +17,33 @@ public class ReservationDAO {
 
 	public ReservationDAO() {
 		conn = DBConnection.getActiveConnection();
+	}
+
+	private Reservation parseReservation() throws SQLException {
+
+		Reservation res = new Reservation();
+
+		res.setReservationID(rs.getInt("reservation.reservation_id"));
+		res.setEaterID(rs.getInt("reservation.eater_id"));
+		res.setnPersons(rs.getInt("reservation.nPersons"));
+		res.setStartTime(rs.getTimestamp("reservation.start_time"));
+		res.setEndTime(rs.getTimestamp("reservation.end_time"));
+		res.setBranch(parseBranch());
+
+		return res;
+	}
+
+	public Branch parseBranch() throws SQLException {
+		Branch branch = new Branch();
+
+		branch.setBranchID(rs.getInt("branch.branch_id"));
+		branch.setPhone(rs.getString("branch.phone"));
+		branch.setLocation(rs.getString("branch.location"));
+		branch.setAddress(rs.getString("branch.address"));
+		branch.setLng(rs.getString("branch.lng"));
+		branch.setLat(rs.getString("branch.lat"));
+
+		return branch;
 	}
 
 	public int addReservation(Reservation res, int branchID) {
@@ -90,4 +118,29 @@ public class ReservationDAO {
 
 		return "false";
 	}
+
+	public ArrayList<Reservation> getReservations(int eaterID) {
+		try {
+			String sql = "SELECT * FROM reservation, branch "
+					+ "WHERE reservation.eater_id=? AND reservation.branch_id=branch.branch_id";
+
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, eaterID);
+
+			rs = stmt.executeQuery();
+
+			ArrayList<Reservation> reservations = new ArrayList<>();
+
+			while (rs.next())
+				reservations.add(parseReservation());
+
+			return reservations;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
 }
