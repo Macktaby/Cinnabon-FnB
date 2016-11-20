@@ -152,4 +152,24 @@ public class BranchDAO {
 		return null;
 	}
 
+	public ArrayList<Branch> filterBranchesByLocation(String location) {
+		try {
+			String sql = "SELECT * FROM branch WHERE location=?";
+
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, location);
+
+			rs = stmt.executeQuery();
+
+			ArrayList<Branch> branches = new ArrayList<>();
+			while (rs.next())
+				branches.add(parseBranch());
+			return branches;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

@@ -81,7 +81,15 @@ public class EaterServices {
 
 		return JSONBuilder.convertBranchesToJSON(branches).toJSONString();
 	}
+	@POST
+	@Path("/filterBranchesByLocation")
+	public String filterBranchesByLocation(@FormParam("location")String location) {
 
+		BranchDAO dao = new BranchDAO();
+		ArrayList<Branch> branches = dao.filterBranchesByLocation(location);
+
+		return JSONBuilder.convertBranchesToJSON(branches).toJSONString();
+	}
 	@POST
 	@Path("/getBranchByID")
 	public String getBranch(@FormParam("id") int id) {
