@@ -268,6 +268,15 @@ public class EaterServices {
 		return ingredients;
 	}
 
+	@POST
+	@Path("/getUserOrders")
+	public String getUserOrders(@FormParam("id") int id) {
+		OrderDAO dao = new OrderDAO();
+		ArrayList<Order> orders = dao.getUserOrders(id);
+
+		return JSONBuilder.convertOrdersToJSON(orders).toJSONString();
+	}
+
 	/*********************************************************************************/
 
 	@GET

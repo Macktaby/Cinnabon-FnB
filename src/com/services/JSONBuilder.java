@@ -372,4 +372,81 @@ public class JSONBuilder {
 		return json;
 	}
 
+	@SuppressWarnings("unchecked")
+	public static JSONObject convertOrdersToJSON(ArrayList<Order> orders) {
+		JSONObject json = new JSONObject();
+
+		if (orders == null) {
+			json.put("state", "false");
+		} else {
+
+			JSONArray jsonArr = new JSONArray();
+			for (Order order : orders)
+				jsonArr.add(convertOrderToJSON(order));
+
+			json.put("state", "true");
+			json.put("orders", jsonArr);
+		}
+
+		return json;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static JSONObject convertOrderToJSON(Order order) {
+		JSONObject json = new JSONObject();
+
+		if (order == null)
+			json.put("state", "false");
+		else {
+			json.put("state", "true");
+			json.put("id", order.getOrderID());
+			json.put("eaterID", order.getEaterID());
+			json.put("creation_time", order.getTimeCreated().toString());
+			json.put("order_time", order.getOrderTime().toString());
+			json.put("order_items", convertOrderItemsToJSON(order.getItems()).get("order_items"));
+			json.put("branch", convertBranchToJSON(order.getBranch()));
+		}
+
+		return json;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static JSONObject convertOrderItemsToJSON(List<OrderItem> items) {
+		JSONObject json = new JSONObject();
+
+		if (items == null) {
+			json.put("state", "false");
+		} else {
+
+			JSONArray jsonArr = new JSONArray();
+			for (OrderItem item : items)
+				jsonArr.add(convertOrderItemToJSON(item));
+
+			json.put("state", "true");
+			json.put("order_items", jsonArr);
+		}
+
+		return json;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static JSONObject convertOrderItemToJSON(OrderItem orderItem) {
+
+		JSONObject json = new JSONObject();
+
+		if (orderItem == null)
+			json.put("state", "false");
+		else {
+			json.put("state", "true");
+			json.put("order_item_id", orderItem.getOrderItemID());
+			json.put("quantity", orderItem.getQuantity());
+			json.put("item", convertItemToJSON(orderItem.getItem()));
+			json.put("size", convertSizeToJSON(orderItem.getSize()));
+			json.put("ingredients", convertIngredientsToJSON(orderItem.getIngredients()).get("ingredients"));
+		}
+
+		return json;
+
+	}
+
 }
