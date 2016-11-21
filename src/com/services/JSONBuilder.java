@@ -24,6 +24,26 @@ public class JSONBuilder {
 
 		JSONObject json = new JSONObject();
 		json.put("id", id);
+		if (id > 0)
+			json.put("state", "true");
+		else
+			json.put("state", "false");
+
+		return json;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static JSONObject convertIDToJSON(int id, String msg) {
+
+		JSONObject json = new JSONObject();
+		json.put("id", id);
+		if (id > 0) {
+			json.put("state", "true");
+			json.put("msg", msg);
+		} else {
+			json.put("state", "false");
+			json.put("error", msg);
+		}
 
 		return json;
 	}

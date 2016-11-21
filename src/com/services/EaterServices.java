@@ -206,7 +206,7 @@ public class EaterServices {
 
 		return JSONBuilder.convertStateToJSON(state).toJSONString();
 	}
-	
+
 	@POST
 	@Path("/getReviews")
 	public String getReviews() {
@@ -217,6 +217,56 @@ public class EaterServices {
 		return JSONBuilder.convertReviewsToJSON(reviews).toJSONString();
 	}
 
+	@POST
+	@Path("/makeOrder")
+	public String makeOrder(@FormParam("eaterID") int eaterID, @FormParam("branchID") int branchID,
+			@FormParam("orderTime") Timestamp orderTime, @FormParam("items") String itemsDetails) {
+
+		ArrayList<OrderItem> orderItems = parseItemDetails(itemsDetails);
+
+		Order order = new Order(0, eaterID, orderTime, orderItems);
+
+		OrderDAO dao = new OrderDAO();
+		int orderID = dao.addOrder(order, branchID);
+		if (orderID == 0)
+			return JSONBuilder.convertIDToJSON(orderID, "Error Adding the order").toJSONString();
+
+		OrderItemDAO daoOI = new OrderItemDAO();
+		String msg = daoOI.addOrderItems(order.getItems(), orderID, branchID);
+
+		return JSONBuilder.convertIDToJSON(orderID, msg).toJSONString();
+	}
+
+	private ArrayList<OrderItem> parseItemDetails(String items) {
+		ArrayList<OrderItem> orderItems = new ArrayList<>();
+
+		String[] parts = items.split("!");
+
+		for (String part : parts) {
+			String[] partDetails = part.split("@");
+
+			int itemID = Integer.parseInt(partDetails[0]);
+			int quantity = Integer.parseInt(partDetails[1]);
+			int sizeID = Integer.parseInt(partDetails[2]);
+			ArrayList<Ingredient> ingredients = parseItemIngredients(partDetails[3]);
+
+			OrderItem orderItem = new OrderItem(0, itemID, sizeID, ingredients, quantity);
+			orderItems.add(orderItem);
+		}
+
+		return orderItems;
+	}
+
+	private ArrayList<Ingredient> parseItemIngredients(String intgredientDetails) {
+		ArrayList<Ingredient> ingredients = new ArrayList<>();
+
+		String[] parts = intgredientDetails.split("_");
+		for (String ingredient : parts) {
+			int ingID = Integer.parseInt(ingredient);
+			ingredients.add(new Ingredient(ingID, ""));
+		}
+		return ingredients;
+	}
 
 	/*********************************************************************************/
 

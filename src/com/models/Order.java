@@ -1,6 +1,8 @@
 package com.models;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Order {
@@ -11,8 +13,28 @@ public class Order {
 	private Timestamp orderTime;
 	private List<OrderItem> items;
 
+	public Order() {
+		this.orderID = 0;
+		this.eaterID = 0;
+		this.branch = new Branch();
+		this.timeCreated = new Timestamp(0);
+		this.orderTime = new Timestamp(0);
+		this.items = new ArrayList<>();
+	}
+
+	public Order(int orderID, int eaterID, Timestamp orderTime, List<OrderItem> items) {
+		this();
+		this.orderID = orderID;
+		this.eaterID = eaterID;
+		this.orderTime = orderTime;
+		this.items = items;
+		Date date = new Date();
+		this.timeCreated = new Timestamp(date.getTime());
+	}
+
 	public Order(int orderID, int eaterID, Branch branch, Timestamp timeCreated, Timestamp orderTime,
 			List<OrderItem> items) {
+		this();
 		this.orderID = orderID;
 		this.eaterID = eaterID;
 		this.branch = branch;
