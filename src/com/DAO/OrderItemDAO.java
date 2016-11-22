@@ -56,10 +56,10 @@ public class OrderItemDAO {
 		return size;
 	}
 
-	private Ingredient parseOrderItemIngredient() throws SQLException {
+	private Ingredient parseOrderItemIngredient(ResultSet rs) throws SQLException {
 		Ingredient ingredient = new Ingredient();
 
-		ingredient.setIngredientID(rs.getInt("ingredient.ingredient_id"));
+		ingredient.setIngredientID(rs.getInt("ingredients.ingredient_id"));
 		ingredient.setIngredientName(rs.getString("ingredients.ingredient_name"));
 
 		return ingredient;
@@ -112,6 +112,7 @@ public class OrderItemDAO {
 	}
 
 	public List<OrderItem> getOrderItems(int orderID) {
+		ArrayList<OrderItem> orderItems = new ArrayList<>();
 		try {
 			String sql = "SELECT * FROM order_items, item, size WHERE order_items.order_id = ? "
 					+ "AND order_items.item_id = item.item_id AND order_items.size_id = size.size_id";
@@ -121,8 +122,6 @@ public class OrderItemDAO {
 
 			rs = stmt.executeQuery();
 
-			ArrayList<OrderItem> orderItems = new ArrayList<>();
-
 			while (rs.next())
 				orderItems.add(parseOrderItem());
 
@@ -130,10 +129,12 @@ public class OrderItemDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
 		return null;
 	}
 
 	public ArrayList<Ingredient> getOrderItemIngredients(int orderItemID) {
+
 		try {
 			String sql = "SELECT * FROM order_item_ingredients, ingredients WHERE order_item_id = ? "
 					+ "AND order_item_ingredients.ingredient_id = ingredients.ingredient_id;";
@@ -141,17 +142,18 @@ public class OrderItemDAO {
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, orderItemID);
 
-			rs = stmt.executeQuery();
+			ResultSet rs = stmt.executeQuery();
 
 			ArrayList<Ingredient> ingredients = new ArrayList<>();
 
 			while (rs.next())
-				ingredients.add(parseOrderItemIngredient());
+				ingredients.add(parseOrderItemIngredient(rs));
 
 			return ingredients;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
 		return null;
 	}
 
